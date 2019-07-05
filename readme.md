@@ -12,3 +12,8 @@ GetMagnet:to get magnet link from piratebay;
 eg.python GetKinkByChannel.py theupperfloor
 
 2.to get newest video:python GetKinkVideos.py
+
+### To Do
+1.read all model pages  
+2.read all director pages  
+3.auto load all videos by channel
