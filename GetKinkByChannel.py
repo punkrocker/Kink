@@ -6,16 +6,18 @@ import pymysql
 import Config
 import sys
 
+sys.argv[0] = "theupperfloor"
+user_agent = 'Mozilla/5.0 (compatible; MSIE 5.5; Windows NT)'
+headers = {'User-Agent': user_agent, 'Cookie': 'viewing-preferences=straight'}
+
 
 def get_channel(channel_name, end_page):
-    user_agent = 'Mozilla/5.0 (compatible; MSIE 5.5; Windows NT)'
-    headers = {'User-Agent': user_agent, 'Cookie': 'viewing-preferences=straight'}
     for page in range(1, int(end_page) + 1):
         url = "https://www.kink.com/channel/" + channel_name + "/latest/page/" + str(page)
         get_url_content(headers, url, channel_name)
 
 
-def get_url_content(headers, url, channel_name):
+def get_url_content(url, channel_name):
     try:
         req = urllib.request.Request(url, None, headers)
         all_the_text = urlopen(req).read()
@@ -67,21 +69,3 @@ def get_url_content(headers, url, channel_name):
                     conn.close()
             except  Exception as e:
                 print(e)
-
-
-sys.argv[0] = "theupperfloor"
-user_agent = 'Mozilla/5.0 (compatible; MSIE 5.5; Windows NT)'
-headers = {'User-Agent': user_agent, 'Cookie': 'viewing-preferences=straight'}
-url = "https://www.kink.com/channel/" + sys.argv[1] + "/latest/page/1"
-try:
-    req = urllib.request.Request(url, None, headers)
-    all_the_text = urlopen(req).read()
-except HTTPError as e:
-    print(e)
-else:
-    soup = BeautifulSoup(all_the_text, "html.parser")
-    result = soup.find("div", {"class", "shoot-list"})
-    shoots = result.findAll("a", {"class", "page-normal"})
-    last = shoots[-1].get_text().strip()
-    get_channel(sys.argv[1], last)
-print("finish")
