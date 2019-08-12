@@ -41,7 +41,7 @@ def get_url_content(headers, url, channel_name):
                     cur.execute(sql)
                     r = cur.fetchall()
                     if (r[0][0] > 0):
-                        continue;
+                        continue
                     else:
                         # 下载图片
                         try:
