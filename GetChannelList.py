@@ -29,7 +29,7 @@ def get_url_content(url, channel_name):
 
 def parse_html(all_the_text, channel_name):
     soup = BeautifulSoup(all_the_text, "html.parser")
-    result = soup.find("div", {"class", "shoot-list"})
+    result = soup.find("div", {"class", "user-id"})
     shoots = result.findAll("div", {"class", "shoot"})
     for child in shoots:
         try:
@@ -76,4 +76,5 @@ def parse_html(all_the_text, channel_name):
 
 
 if __name__ == '__main__':
-    print('a')
+    content = open('./target_html/channel.html', 'r', encoding='utf-8').read()
+    parse_html(content, '')
