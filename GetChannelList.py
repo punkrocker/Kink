@@ -1,30 +1,16 @@
-from bs4 import BeautifulSoup
-from urllib.request import urlopen
-from urllib.error import HTTPError
-import urllib
-import pymysql
-import Config
 import sys
+import urllib
+from urllib.error import HTTPError
+from urllib.request import urlopen
+
+import pymysql
+from bs4 import BeautifulSoup
+
+import Config
 
 sys.argv[0] = "theupperfloor"
 user_agent = 'Mozilla/5.0 (compatible; MSIE 5.5; Windows NT)'
 headers = {'User-Agent': user_agent, 'Cookie': 'viewing-preferences=straight'}
-
-
-def get_channel(channel_name, end_page):
-    for page in range(1, int(end_page) + 1):
-        url = "https://www.kink.com/channel/" + channel_name + "/latest/page/" + str(page)
-        get_url_content(headers, url, channel_name)
-
-
-def get_url_content(url, channel_name):
-    try:
-        req = urllib.request.Request(url, None, headers)
-        all_the_text = urlopen(req).read()
-    except HTTPError as e:
-        print(e)
-    else:
-        parse_html(all_the_text, channel_name)
 
 
 def parse_html(all_the_text, channel_name):
