@@ -1,5 +1,3 @@
-import pymysql
-
 HostIP = 'localhost'
 UserName = 'root'
 Password = '123'
