@@ -13,7 +13,6 @@ def parse_html(all_the_text):
     desc = str(soup.find('span', id='expand-text').text).strip()
     tags = str(soup.find('div', {'class', 'model-tags'}).text).strip()
     tags = tags.replace('tags:', '').replace('\n', '').strip()
-    print(tags)
 
 
 if __name__ == '__main__':
