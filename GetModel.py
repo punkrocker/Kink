@@ -1,11 +1,17 @@
 from bs4 import BeautifulSoup
 
 
-def parse_html(all_the_text):
-    soup = BeautifulSoup(all_the_text, "html.parser")
-    model_name = soup.find("h1", {"class", "page-title"})
+def get_model_name(soup):
+    model_name = soup.find('h1', {'class', 'page-title'})
     [s.extract() for s in model_name('span')]
-    print(str(model_name.text).strip())
+    return str(model_name.text).strip()
+
+
+def parse_html(all_the_text):
+    soup = BeautifulSoup(all_the_text, 'html.parser')
+    model_name = get_model_name(soup)
+    desc = str(soup.find('span', id='expand-text').text).strip()
+    print(desc)
 
 
 if __name__ == '__main__':
