@@ -2,9 +2,6 @@ from bs4 import BeautifulSoup
 import pymysql
 import Config
 
-user_agent = 'Mozilla/5.0 (compatible; MSIE 5.5; Windows NT)'
-headers = {'User-Agent': user_agent, 'Cookie': 'viewing-preferences=straight'}
-
 
 def parse_html(all_the_text):
     soup = BeautifulSoup(all_the_text, "html.parser")
