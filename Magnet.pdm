@@ -1919,10 +1919,9 @@ LABL 0 新宋体,8,N</a:FontList>
 <a:Code>Tags</a:Code>
 <a:CreationDate>1569594997</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1569595089</a:ModificationDate>
+<a:ModificationDate>1569943365</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
-<a:DataType>varchar(65535)</a:DataType>
-<a:Length>65535</a:Length>
+<a:DataType>text</a:DataType>
 </o:Column>
 <o:Column Id="o31">
 <a:ObjectID>9E455530-9C34-4C13-A003-30E97B0DF224</a:ObjectID>
