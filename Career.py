@@ -2,11 +2,11 @@ from bs4 import BeautifulSoup
 
 
 class Career:
-    def __init__(self, text):
+    def __init__(self, text, is_model=True):
         self.name = ''
         self.desc = ''
         self.tags = ''
-        self.is_model = True
+        self.is_model = is_model
         self.parse_html(text)
 
     def get_model_name(self, soup):
