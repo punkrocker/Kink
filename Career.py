@@ -6,8 +6,8 @@ class Career:
         self.name = ''
         self.desc = ''
         self.tags = ''
-        self.parse_html(text)
         self.is_model = True
+        self.parse_html(text)
 
     def get_model_name(self, soup):
         model_name = soup.find('h1', {'class', 'page-title'})
