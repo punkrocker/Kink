@@ -7,6 +7,7 @@ class Career:
         self.desc = ''
         self.tags = ''
         self.parse_html(text)
+        self.is_model = True
 
     def get_model_name(self, soup):
         model_name = soup.find('h1', {'class', 'page-title'})
@@ -17,5 +18,6 @@ class Career:
         soup = BeautifulSoup(all_the_text, 'html.parser')
         self.get_model_name(soup)
         self.desc = str(soup.find('span', id='expand-text').text).strip()
-        tags = str(soup.find('div', {'class', 'model-tags'}).text).strip()
-        self.tags = tags.replace('tags:', '').replace('\n', '').strip()
+        if self.is_model:
+            tags = str(soup.find('div', {'class', 'model-tags'}).text).strip()
+            self.tags = tags.replace('tags:', '').replace('\n', '').strip()
