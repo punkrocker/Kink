@@ -1753,10 +1753,9 @@ LABL 0 新宋体,8,N</a:FontList>
 <a:Code>Performer</a:Code>
 <a:CreationDate>1469854465</a:CreationDate>
 <a:Creator>yuhk</a:Creator>
-<a:ModificationDate>1469854496</a:ModificationDate>
-<a:Modifier>yuhk</a:Modifier>
-<a:DataType>varchar(200)</a:DataType>
-<a:Length>200</a:Length>
+<a:ModificationDate>1570204374</a:ModificationDate>
+<a:Modifier>Administrator</a:Modifier>
+<a:DataType>text</a:DataType>
 </o:Column>
 <o:Column Id="o19">
 <a:ObjectID>23FAF46B-5C53-48DC-A814-292439070188</a:ObjectID>
@@ -1774,10 +1773,9 @@ LABL 0 新宋体,8,N</a:FontList>
 <a:Code>Categories</a:Code>
 <a:CreationDate>1569596459</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1569596490</a:ModificationDate>
+<a:ModificationDate>1570204374</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
-<a:DataType>varchar(200)</a:DataType>
-<a:Length>200</a:Length>
+<a:DataType>text</a:DataType>
 </o:Column>
 <o:Column Id="o21">
 <a:ObjectID>7BCB13DD-41C1-4D1A-886A-3073913BF5F8</a:ObjectID>
