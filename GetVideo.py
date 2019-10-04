@@ -33,7 +33,10 @@ def parse_html(all_the_text):
     date = str(date.find('p').text).strip().replace('Date: ', '')
     time_format = datetime.datetime.strptime(date, '%B %d, %Y')  # datetime.datetime(2016, 11, 18, 0, 0)
     upload_date = datetime.datetime.strftime(time_format, '%Y-%m-%d')
-    print(upload_date)
+    download_content = soup.find('div', {'class', 'member-content'})
+    download_content = download_content.find('div', {'class', 'full'})
+    download_link = download_content.find('li').find('a')
+    print(download_link['href'])
 
 
 if __name__ == '__main__':
