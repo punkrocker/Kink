@@ -15,20 +15,22 @@ def parse_html(all_the_text):
     shoot_channel = shoot_base['data-sitename']
     performers = soup.find('p', {'class', 'starring'})
     performers = performers.findAll('a')
-    for p in performers:
-        print(p.text)
-    directors = soup.find('p', {'class', 'director'})
-    directors = directors.findAll('a')
-    for d in directors:
-        print(d.text)
-    tags = soup.find('p', {'class', 'category-tag-list'})
-    tags = tags.findAll('a')
-    for t in tags:
-        print(t.text)
-
-    # desc = str(soup.find('span', id='expand-text').text).strip()
-    # tags = str(soup.find('div', {'class', 'model-tags'}).text).strip()
-    # tags = tags.replace('tags:', '').replace('\n', '').strip()
+    # for p in performers:
+    #     print(p.text)
+    # directors = soup.find('p', {'class', 'director'})
+    # directors = directors.findAll('a')
+    # for d in directors:
+    #     print(d.text)
+    # tags = soup.find('p', {'class', 'category-tag-list'})
+    # tags = tags.findAll('a')
+    # for t in tags:
+    #     print(t.text)
+    desc = str(soup.find('div', {'class', 'description'}).text).strip()
+    date = soup.find('div', {'class', 'shoot-info'})
+    date = date.find('div', {'class', 'columns'})
+    date = date.find('div', {'class', 'column'})
+    date = str(date.find('p').text).strip().replace('Date: ', '')
+    print(date)
 
 
 if __name__ == '__main__':
