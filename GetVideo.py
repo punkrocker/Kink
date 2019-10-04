@@ -21,6 +21,11 @@ def parse_html(all_the_text):
     directors = directors.findAll('a')
     for d in directors:
         print(d.text)
+    tags = soup.find('p', {'class', 'category-tag-list'})
+    tags = tags.findAll('a')
+    for t in tags:
+        print(t.text)
+
     # desc = str(soup.find('span', id='expand-text').text).strip()
     # tags = str(soup.find('div', {'class', 'model-tags'}).text).strip()
     # tags = tags.replace('tags:', '').replace('\n', '').strip()
