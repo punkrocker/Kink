@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import datetime
 
 
 def get_shoot_name(soup):
@@ -30,7 +31,9 @@ def parse_html(all_the_text):
     date = date.find('div', {'class', 'columns'})
     date = date.find('div', {'class', 'column'})
     date = str(date.find('p').text).strip().replace('Date: ', '')
-    print(date)
+    time_format = datetime.datetime.strptime(date, '%B %d, %Y')  # datetime.datetime(2016, 11, 18, 0, 0)
+    upload_date = datetime.datetime.strftime(time_format, '%Y-%m-%d')
+    print(upload_date)
 
 
 if __name__ == '__main__':
