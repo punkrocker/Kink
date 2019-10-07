@@ -23,28 +23,46 @@ class Shoot:
     def parse_html(self, all_the_text):
         soup = BeautifulSoup(all_the_text, 'html.parser')
         self.get_shoot_name(soup)
-        shoot_base = soup.find('div', {'class', 'shoot-page'})
-        self.shoot_id = shoot_base['data-shootid']
-        self.channel_name = shoot_base['data-sitename']
-        performers = soup.find('p', {'class', 'starring'})
-        performers = performers.findAll('a')
-        for p in performers:
-            self.actor_names.append(p.text)
-        directors = soup.find('p', {'class', 'director'})
-        directors = directors.findAll('a')
-        for d in directors:
-            self.director_names.append(d.text)
-        tags = soup.find('p', {'class', 'category-tag-list'})
-        tags = tags.findAll('a')
-        for t in tags:
-            self.categories.append(t.text)
+        self.get_base_info(soup)
+        self.get_performers(soup)
+        self.get_director(soup)
+        self.get_categories(soup)
         self.description = str(soup.find('div', {'class', 'description'}).text).strip()
+        self.get_shoot_date(soup)
+        self.get_download_link(soup)
+
+    def get_download_link(self, soup):
+        download_content = soup.find('div', {'class', 'member-content'})
+        download_content = download_content.find('div', {'class', 'full'})
+        self.download_link = download_content.find('li').find('a')['href']
+
+    def get_shoot_date(self, soup):
         date = soup.find('div', {'class', 'shoot-info'})
         date = date.find('div', {'class', 'columns'})
         date = date.find('div', {'class', 'column'})
         date = str(date.find('p').text).strip().replace('Date: ', '')
         time_format = datetime.datetime.strptime(date, '%B %d, %Y')
         self.shoot_date = datetime.datetime.strftime(time_format, '%Y-%m-%d')
-        download_content = soup.find('div', {'class', 'member-content'})
-        download_content = download_content.find('div', {'class', 'full'})
-        self.download_link = download_content.find('li').find('a')['href']
+
+    def get_categories(self, soup):
+        tags = soup.find('p', {'class', 'category-tag-list'})
+        tags = tags.findAll('a')
+        for t in tags:
+            self.categories.append(t.text)
+
+    def get_director(self, soup):
+        directors = soup.find('p', {'class', 'director'})
+        directors = directors.findAll('a')
+        for d in directors:
+            self.director_names.append(d.text)
+
+    def get_performers(self, soup):
+        performers = soup.find('p', {'class', 'starring'})
+        performers = performers.findAll('a')
+        for p in performers:
+            self.actor_names.append(p.text)
+
+    def get_base_info(self, soup):
+        shoot_base = soup.find('div', {'class', 'shoot-page'})
+        self.shoot_id = shoot_base['data-shootid']
+        self.channel_name = shoot_base['data-sitename']
