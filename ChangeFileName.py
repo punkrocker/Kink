@@ -1,3 +1,4 @@
+# 修改Kink原始文件名，添加系列
 import os
 
 for filename in os.listdir('G:\\'):
