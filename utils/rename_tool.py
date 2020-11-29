@@ -11,11 +11,12 @@ class RenameTool:
             path = root.replace(self.path, '').replace('\\', '-')
             for i in range(len(files)):
                 file = files[i]
-                if file.endswith('.mp4'):
+                if file.endswith('.avi'):
                     full_file = os.path.join(root, file)
-                    dest_file = os.path.join(root, path + '-' + str(i + 1) + '.mp4')
+                    dest_file = os.path.join(root, path + '-' + str(i + 1) + '.avi')
                     os.rename(full_file, dest_file)
                     print(full_file, dest_file)
+
 
     def get_video_length(self):
         file_dic = {}
@@ -48,5 +49,5 @@ class RenameTool:
 
 
 if __name__ == '__main__':
-    renamer = RenameTool('H:\\china\\X-小鳥醬')
-    renamer.get_video_length()
+    renamer = RenameTool('H:\\ChinaBondage')
+    renamer.rename()

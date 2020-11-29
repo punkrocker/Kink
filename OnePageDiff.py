@@ -5,7 +5,8 @@
 from bs4 import BeautifulSoup
 import os
 
-video_path = ["O:\\boundgangbangs\\2020", "O:\\boundgangbangs\\2019"]
+page = 25
+video_path = ["G:\\SAS\\" + str(page)]
 
 
 def get_diff(paths):
@@ -44,11 +45,11 @@ for a in not_in_path:
     print(a)
 print(len(not_in_path))
 
-print('=========================================')
-# downloaded_path = 'P:\\Tuf\\转移tUF'
-downloaded_path = 'Q:\\转移'
-files = os.listdir(downloaded_path)
-for file in files:
-    for num in not_in_path:
-        if (num in file):
-            print(file)
+# print('=========================================')
+# # downloaded_path = 'P:\\Tuf\\转移tUF'
+# downloaded_path = 'Q:\\转移'
+# files = os.listdir(downloaded_path)
+# for file in files:
+#     for num in not_in_path:
+#         if (num in file):
+#             print(file)
