@@ -1,6 +1,6 @@
-HostIP = '10.0.0.138'
+HostIP = '127.0.0.1'
 UserName = 'root'
-Password = '123123'
+Password = 'Bushi123*'
 DBName = 'kink'
 Port = 3306
 Charset = 'utf8'

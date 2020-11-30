@@ -17,7 +17,6 @@ class RenameTool:
                     os.rename(full_file, dest_file)
                     print(full_file, dest_file)
 
-
     def get_video_length(self):
         file_dic = {}
         for root, dirs, files in os.walk(self.path):
