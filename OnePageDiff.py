@@ -4,15 +4,24 @@
 
 from bs4 import BeautifulSoup
 import os
+from urllib.request import urlopen
+from urllib.error import HTTPError
+import urllib
 
-page = 25
-video_path = ["G:\\SAS\\" + str(page)]
+page = 21
+video_path = ["Q:\\SAS\\" + str(page)]
+url = "https://www.kink.com/channel/sexandsubmission/latest/page/" + str(page)
 
 
 def get_diff(paths):
     user_agent = 'Mozilla/5.0 (compatible; MSIE 5.5; Windows NT)'
     headers = {'User-Agent': user_agent, 'Cookie': 'viewing-preferences=straight'}
     content = open('./target_html/video_list_page.html', 'r', encoding='utf-8').read()
+    try:
+        req = urllib.request.Request(url, None, headers)
+        content = urlopen(req).read()
+    except HTTPError as e:
+        print(e)
     soup = BeautifulSoup(content, 'html.parser')
     result = soup.find("div", {"class", "shoot-list"})
     shoots = result.findAll("div", {"class", "shoot"})
