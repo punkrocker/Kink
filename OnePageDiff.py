@@ -8,9 +8,16 @@ from urllib.request import urlopen
 from urllib.error import HTTPError
 import urllib
 
-page = 21
-video_path = ["Q:\\SAS\\" + str(page)]
-url = "https://www.kink.com/channel/sexandsubmission/latest/page/" + str(page)
+page = 3
+# video_path = ["N:\\SAS1-17\\" + str(page)]
+# video_path = ["G:\\SAS\\" + str(page)]
+video_path = ["N:\KinkUniversity\\" + str(page),
+              "N:\\转移",
+              "G:\\SAS\\KU",
+              "N:\KinkUniversity"
+              ]
+url = "https://www.kink.com/channel/kinkuniversity/latest/page/" + str(page)
+downloaded_full_path = []
 
 
 def get_diff(paths):
@@ -37,12 +44,13 @@ def get_diff(paths):
         files = os.listdir(path)
         for file in files:
             if file.endswith('.mp4'):
-                video_files.append(file)
+                video_files.append(path + file)
     downloaded_video = []
     for number in page_videos:
         for file in video_files:
             if number in file:
                 downloaded_video.append(number)
+                downloaded_full_path.append(path + file)
                 continue
     return page_videos, downloaded_video
 
@@ -50,15 +58,10 @@ def get_diff(paths):
 page_videos, downloaded_videos = get_diff(video_path)
 
 not_in_path = set(page_videos) - set(downloaded_videos)
+list.sort(downloaded_full_path)
 for a in not_in_path:
     print(a)
 print(len(not_in_path))
-
-# print('=========================================')
-# # downloaded_path = 'P:\\Tuf\\转移tUF'
-# downloaded_path = 'Q:\\转移'
-# files = os.listdir(downloaded_path)
-# for file in files:
-#     for num in not_in_path:
-#         if (num in file):
-#             print(file)
+print("===================")
+for file in downloaded_full_path:
+    print(file)
