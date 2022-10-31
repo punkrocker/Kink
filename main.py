@@ -21,6 +21,7 @@ def download_channel_page(channel_page_url):
     for shoot_index in range(len(shoots), 0, -1):
         shoot = shoots[shoot_index - 1]
         download_shoot('https://www.kink.com' + shoot.attrs['href'])
+        break
 
 
 def download_channel(chanenl_name):
