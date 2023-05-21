@@ -12,7 +12,7 @@ class Shoot:
         self.description = ''
         self.shoot_date = datetime.date
         self.channel_name = ''
-        self.download_link = ''
+        self.download_link = []
         self.parse_html(text)
 
     def get_shoot_name(self, soup):
@@ -22,19 +22,20 @@ class Shoot:
 
     def parse_html(self, all_the_text):
         soup = BeautifulSoup(all_the_text, 'html.parser')
-        self.get_shoot_name(soup)
-        self.get_base_info(soup)
-        self.get_performers(soup)
-        self.get_director(soup)
-        self.get_categories(soup)
-        self.description = str(soup.find('div', {'class', 'description'}).text).strip()
-        self.get_shoot_date(soup)
+        # self.get_shoot_name(soup)
+        # self.get_base_info(soup)
+        # self.get_performers(soup)
+        # self.get_director(soup)
+        # self.get_categories(soup)
+        # self.description = str(soup.find('div', {'class', 'description'}).text).strip()
+        # self.get_shoot_date(soup)
         self.get_download_link(soup)
 
     def get_download_link(self, soup):
-        download_content = soup.find('div', {'class', 'member-content'})
-        download_content = download_content.find('div', {'class', 'full'})
-        self.download_link = download_content.find('li').find('a')['href']
+        download_content = soup.find('ul', {'class', 'full-movie'})
+        download_content = download_content.find_all('li')
+        for li in download_content:
+            self.download_link.append(li.find('a')['href'])
 
     def get_shoot_date(self, soup):
         date = soup.find('div', {'class', 'shoot-info'})
